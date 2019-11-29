@@ -1,19 +1,31 @@
+// Set up an array to store X and O plays
 const board = [];
 
+// Play runs when each square is clicked
 function play(clickedId) {
+
+  // Grab the span that tells us whose turn it is
   const playerSpan = document.getElementById('player');
+
+  // `clickedElement` is the square that was clicked
   const clickedElement = document.getElementById(clickedId);
 
   if (playerSpan.innerText === 'X') {
+
+    // display the next player's turn
     playerSpan.innerText = 'O';
+
+    // mark the square
     clickedElement.innerText = 'X';
+
+    // store the mark
     board[clickedId] = 'X';
   } else {
     playerSpan.innerText = 'X';
     clickedElement.innerText = 'O';
     board[clickedId] = 'O';
   }
-  console.log(board);
+  // console.log(board);
 
 
   const topLeft = board[0];
@@ -56,14 +68,17 @@ function play(clickedId) {
   }
   if (bottomLeft !== undefined && bottomLeft === middleCenter && bottomLeft === topRight) {
     alert(`${bottomLeft} is the winner`);
-  }}
-
+  }
+  
   let boardFull = true;
   for (let i = 0; i <= 8; i++) {
+    console.log("i is ", i, " and (board[i] ", board[i])
     if (board[i] === undefined) {
       boardFull = false;
     }
   }
+    console.log("boardFull ", boardFull)
   if (boardFull === true) {
     alert("Cat's game, there is no winner");
   }
+}
